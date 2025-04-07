@@ -1,6 +1,8 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class Task(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     title = models.CharField(max_length=200, verbose_name='название')
     description = models.TextField(blank=True, verbose_name='описание')
     completed = models.BooleanField(default=False, verbose_name='совершенность')
